@@ -13,6 +13,8 @@
 
 - Additions to CMake should be done to the CMakeLists.txt in the './src' directory and not in the top level CMakeLists.txt
 
+* create tblupgrade account & deploy contract
+
 ```
 amcli create account amax tblupgrade AM6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV AM6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
 
@@ -29,8 +31,10 @@ executed transaction: 5f7e7a388eb8994b65ae0bfd4298576edd0bd18b757e481c8975e77bee
 #          amax <= amax::setabi                 {"account":"tblupgrade","abi":"0d616d61783a3a6162692f312e3100040663726561746500030269640675696e74363...
 ```
 
+* call contract create row data
+
 ```
-amcli push action tblupgrade create '["1","one",20]' -p hello
+amcli push action tblupgrade create '[1,"one",20]' -p hello
 
 executed transaction: 75565485120c3cd743781a344a6a54d07fec22093bfed93d35ec5f6b6854f356  120 bytes  8775 us
 #    tblupgrade <= tblupgrade::create           {"id":1,"fullname":"one","age":20}
@@ -50,8 +54,10 @@ amcli get table tblupgrade tblupgrade persons
 }
 ```
 
+* call contract update data
+
 ```
-amcli push action tblupgrade update '["1","oneone",22]' -p hello
+amcli push action tblupgrade update '[1,"oneone",22]' -p hello
 
 executed transaction: c1d4ede18c84aeeb6ec038f6c1ab967b1cc95946f0a9f4b665c00ae2e0ce2681  120 bytes  5359 us
 #    tblupgrade <= tblupgrade::update           {"id":1,"fullname":"oneone","age":22}
@@ -70,6 +76,8 @@ amcli get table tblupgrade tblupgrade persons
   "next_key": ""
 }
 ```
+
+* call contract create data & remove data
 
 ```
 amcli push action tblupgrade create '[2,"two",18]' -p hello
