@@ -1,0 +1,99 @@
+{
+    "____comment": "This file was generated with amax-abigen. DO NOT EDIT ",
+    "version": "amax::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "create",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "fullname",
+                    "type": "name"
+                },
+                {
+                    "name": "age",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "person",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "fullname",
+                    "type": "name"
+                },
+                {
+                    "name": "age",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "remove",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "update",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "fullname",
+                    "type": "name"
+                },
+                {
+                    "name": "age",
+                    "type": "uint64"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "create",
+            "type": "create",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "remove",
+            "type": "remove",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "update",
+            "type": "update",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "persons",
+            "type": "person",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": []
+}
