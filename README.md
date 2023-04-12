@@ -163,3 +163,72 @@ amcli push action tblupgrade create '[3,"three",13,"woman","dev"]' -p hello
 executed transaction: 31c8aaf0d6dbed6b78c85f45b726da5881a2537995cf3c7499167a4c9636faff  128 bytes  3497 us
 #    tblupgrade <= tblupgrade::create           {"id":3,"fullname":"three","age":13,"sex":"woman","work":"dev"}
 ```
+
+### upgrade complete
+
+* deploy new contract
+
+```
+amcli set contract tblupgrade ./amax_table_upgrade -p tblupgrade
+
+Reading WASM from /root/workspace/amax_table_upgrade/build/amax_table_upgrade/amax_table_upgrade.wasm...
+Skipping set abi because the new abi is the same as the existing abi
+Publishing contract...
+executed transaction: fc2702c2709377b5e746a0db97ee96db6aaffdf8c7a6d3d2980a17e2283e956b  5016 bytes  4771 us
+#          amax <= amax::setcode                {"account":"tblupgrade","vmtype":0,"vmversion":0,"code":"0061736d0100000001ae011b60000060027f7f00600...
+```
+
+* get table data
+
+```
+amcli get table tblupgrade tblupgrade persons
+{
+  "rows": [{
+      "id": 1,
+      "fullname": "oneoneone",
+      "age": 32,
+      "sex": "man",
+      "work": "contract dev"
+    },{
+      "id": 3,
+      "fullname": "three",
+      "age": 13,
+      "sex": "woman",
+      "work": "dev"
+    }
+  ],
+  "more": false,
+  "next_key": ""
+}
+```
+
+- update data
+
+```
+amcli push action tblupgrade update '[1,"oneoneoneone",22,"man","contract dev succ"]' -p hello
+
+executed transaction: 91828a4d52f2066014c4b959962c918fa4cb68eb04e704999589e6f34c96443b  144 bytes  2781 us
+#    tblupgrade <= tblupgrade::update           {"id":1,"fullname":"oneoneoneone","age":22,"sex":"man","work":"contract dev succ"}
+
+
+amcli get table tblupgrade tblupgrade persons
+
+{
+  "rows": [{
+      "id": 1,
+      "fullname": "oneoneoneone",
+      "age": 22,
+      "sex": "man",
+      "work": "contract dev succ"
+    },{
+      "id": 3,
+      "fullname": "three",
+      "age": 13,
+      "sex": "woman",
+      "work": "dev"
+    }
+  ],
+  "more": false,
+  "next_key": ""
+}
+```

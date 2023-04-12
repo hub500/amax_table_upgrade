@@ -35,16 +35,17 @@ private:
 
     /// upgrade start
     // EOSLIB_SERIALIZE(person, (id)(fullname)(age));
+    EOSLIB_SERIALIZE(person, (id)(fullname)(age)(sex)(work));
 
-    template <typename DataStream>
-    friend DataStream& operator<<(DataStream& ds, const person& t) {
-        return ds << t.id << t.fullname << t.age << t.sex << t.work;
-    }
+    // template <typename DataStream>
+    // friend DataStream& operator<<(DataStream& ds, const person& t) {
+    //     return ds << t.id << t.fullname << t.age << t.sex << t.work;
+    // }
 
-    template <typename DataStream>
-    friend DataStream& operator>>(DataStream& ds, person& t) {
-        return ds >> t.id << t.fullname << t.age;
-    }
+    // template <typename DataStream>
+    // friend DataStream& operator>>(DataStream& ds, person& t) {
+    //     return ds >> t.id << t.fullname << t.age;
+    // }
     /// upgrade end
 
     // clang-format off
