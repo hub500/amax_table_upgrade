@@ -121,3 +121,45 @@ amcli get table tblupgrade tblupgrade persons
   "next_key": ""
 }
 ```
+
+### upgrade step one
+
+* upgrade deploy contract
+
+```
+amcli set contract tblupgrade ./amax_table_upgrade -p tblupgrade
+
+Reading WASM from /root/workspace/amax_table_upgrade/build/amax_table_upgrade/amax_table_upgrade.wasm...
+Publishing contract...
+executed transaction: 44399c288aad1abdf3e30049df9ffd555ac80e3ee0adc24c789947090a3a1975  5128 bytes  6029 us
+#          amax <= amax::setcode                {"account":"tblupgrade","vmtype":0,"vmversion":0,"code":"0061736d0100000001ae011b60000060027f7f00600...
+#          amax <= amax::setabi                 {"account":"tblupgrade","abi":"0d616d61783a3a6162692f312e3100040663726561746500050269640675696e74363...
+```
+
+* get table row fail
+
+```
+amcli get table tblupgrade tblupgrade persons
+
+Error 3015013: Unpack data exception
+Error Details:
+Stream unexpectedly ended; unable to unpack field 'sex' of struct 'person'
+```
+
+* update data
+
+```
+amcli push action tblupgrade update '[1,"oneoneone",32,"man","contract dev"]' -p hello
+
+executed transaction: db44204d80bf07a7d70f78e670c3dcb7f50dd445cb313dd54239425d6f6152ec  136 bytes  3947 us
+#    tblupgrade <= tblupgrade::update           {"id":1,"fullname":"oneoneone","age":32,"sex":"man","work":"contract dev"}
+```
+
+* create data
+
+```
+amcli push action tblupgrade create '[3,"three",13,"woman","dev"]' -p hello
+
+executed transaction: 31c8aaf0d6dbed6b78c85f45b726da5881a2537995cf3c7499167a4c9636faff  128 bytes  3497 us
+#    tblupgrade <= tblupgrade::create           {"id":3,"fullname":"three","age":13,"sex":"woman","work":"dev"}
+```

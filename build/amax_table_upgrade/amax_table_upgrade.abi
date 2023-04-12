@@ -18,6 +18,14 @@
                 {
                     "name": "age",
                     "type": "uint64"
+                },
+                {
+                    "name": "sex",
+                    "type": "string"
+                },
+                {
+                    "name": "work",
+                    "type": "string"
                 }
             ]
         },
@@ -36,6 +44,14 @@
                 {
                     "name": "age",
                     "type": "uint64"
+                },
+                {
+                    "name": "sex",
+                    "type": "string"
+                },
+                {
+                    "name": "work",
+                    "type": "string"
                 }
             ]
         },
@@ -64,6 +80,14 @@
                 {
                     "name": "age",
                     "type": "uint64"
+                },
+                {
+                    "name": "sex",
+                    "type": "string"
+                },
+                {
+                    "name": "work",
+                    "type": "string"
                 }
             ]
         }
